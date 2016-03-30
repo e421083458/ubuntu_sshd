@@ -1,23 +1,15 @@
-# Ubuntu-sshd
+# Ubuntu_sshd
 
 Dockerized SSH service, built on top of [official Ubuntu](https://registry.hub.docker.com/_/ubuntu/) images.
 
 ## Image tags
 
-- rastasheep/ubuntu-sshd:12.04 (precise)
-- rastasheep/ubuntu-sshd:12.10 (quantal)
-- rastasheep/ubuntu-sshd:13.04 (raring)
-- rastasheep/ubuntu-sshd:13.10 (saucy)
 - rastasheep/ubuntu-sshd:14.04 (trusty)
 
 ## Installed packages
 
 Base:
 
-- [precise (12.04) minimal](http://packages.ubuntu.com/precise/ubuntu-minimal)
-- [quantal (12.10) minimal](http://packages.ubuntu.com/quantal/ubuntu-minimal)
-- [raring (13.04) minimal](http://packages.ubuntu.com/raring/ubuntu-minimal)
-- [saucy (13.10) minimal](http://packages.ubuntu.com/saucy/ubuntu-minimal)
 - [trusty (14.04) minimal](http://packages.ubuntu.com/trusty/ubuntu-minimal)
 
 Image specific:
@@ -34,13 +26,11 @@ Config:
 ## Run example
 
 ```bash
-$ sudo docker run -d -P --name test_sshd rastasheep/ubuntu-sshd:14.04
-$ sudo docker port test_sshd 22
-  0.0.0.0:49154
+docker build -t e421083458/ubuntu14.04_sshd .
+docker run -d -p 3022:22 --name test_sshd_3022 ubuntu14.04_sshd
+//optional --restart=always
 
-$ ssh root@localhost -p 49154
-# The password is `root`
-root@test_sshd $
+ssh root@127.0.0.1 -p 3022
 ```
 
 ## Issues
